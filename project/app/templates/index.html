@@ -4,7 +4,25 @@
     <title>NarrativeIQ</title>
 </head>
 <body>
-    <h1>Welcome to NarrativeIQ</h1>
-    <p>News Sentiment & Narrative Analysis Platform</p>
+
+    <h1>NarrativeIQ</h1>
+
+    <form method="POST">
+        <input type="text" name="topic" placeholder="Enter topic" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <hr>
+
+    <h2>Fetched Articles</h2>
+
+    {% for article in articles %}
+        <div style="margin-bottom:20px;">
+            <strong>{{ article.title }}</strong><br>
+            <small>{{ article.source }}</small><br>
+            <p>{{ article.description }}</p>
+        </div>
+    {% endfor %}
+
 </body>
 </html>
