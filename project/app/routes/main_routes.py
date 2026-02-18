@@ -9,9 +9,11 @@ def home():
     if request.method == "POST":
         topic = request.form.get("topic")
 
-        articles = NewsService.fetch_from_newsapi(topic)
-        NewsService.save_articles(topic, articles)
+        articles_newsapi = NewsService.fetch_from_newsapi(topic)
+        articles_gnews = NewsService.fetch_from_gnews(topic)
+        
+        all_articles = articles_newsapi + articles_gnews
+        NewsService.save_articles(topic, all_articles)
 
     stored_articles = Article.query.order_by(Article.created_at.desc()).all()
-
     return render_template("index.html", articles=stored_articles)
