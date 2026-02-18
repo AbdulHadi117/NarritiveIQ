@@ -35,6 +35,31 @@ class NewsService:
         return articles
     
     @staticmethod
+    def fetch_from_gnews(topic):
+        url = 'https://gnews.io/api/v4/search'
+        params = {
+            'q': topic,
+            'token': current_app.config['GNEWS_API_KEY'],
+            'lang': 'en',
+            'max': 10
+        }
+        
+        response = requests.get(url, params=params)
+        data = response.json()
+        articles = []
+
+        for item in data.get('articles', []):
+            article = {
+                'title': item.get('title'),
+                'description': item.get('description'),
+                'source': item.get('source', {}).get('name'),
+                'published_at': item.get('publishedAt')
+            }
+            articles.append(article)
+
+        return articles
+        
+    @staticmethod
     def save_articles(topic, articles):
         for item in articles:
             if not item['title']:
