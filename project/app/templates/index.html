@@ -21,6 +21,7 @@
             <strong>{{ article.title }}</strong><br>
             <small>{{ article.source }}</small><br>
             <p>{{ article.description }}</p>
+            <p><strong>Sentiment:</strong> {{ article.sentiment_label }} ({{ article.sentiment_score }})</p>
         </div>
     {% endfor %}
 
