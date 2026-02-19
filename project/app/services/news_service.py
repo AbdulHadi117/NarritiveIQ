@@ -3,6 +3,7 @@ from flask import current_app
 from app.models.article import Article
 from app import db
 from datetime import datetime
+from app.services.sentiment_service import SentimentService
 
 class NewsService:
 
@@ -72,6 +73,9 @@ class NewsService:
             if existing:
                 continue
 
+            full_text = f"{item['title']} {item['description']}"
+            sentiment_score, sentiment_label = SentimentService.analyze_sentiment(full_text)
+
             article = Article(
                 title=item["title"],
                 description=item["description"],
@@ -79,7 +83,9 @@ class NewsService:
                 topic=topic,
                 published_at=datetime.fromisoformat(
                     item["published_at"].replace("Z", "+00:00")
-                ) if item["published_at"] else None
+                ) if item["published_at"] else None,
+                sentiment_score=sentiment_score,
+                sentiment_label=sentiment_label
             )
             db.session.add(article)
         db.session.commit()
