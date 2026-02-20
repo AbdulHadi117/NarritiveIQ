@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Analytics Dashboard</h1>
+
+<div class="dashboard-grid">
+  <div class="card metric">
+    <h4>Bias Index</h4>
+    <h2>{{ bias_index }}</h2>
+  </div>
+
+  <div class="card metric">
+    <h4>Polarization</h4>
+    <h2>{{ polarization }}</h2>
+  </div>
+
+  <div class="card metric">
+    <h4>Total Articles</h4>
+    <h2>{{ articles|length }}</h2>
+  </div>
+</div>
+
+<div class="card">
+<canvas id="sentimentChart"></canvas>
+</div>
+
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script>
+  loadSentimentChart(
+      {{ chart_labels | tojson }},
+      {{ chart_values | tojson }}
+  );
+</script>
+{% endblock %}

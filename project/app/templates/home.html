@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="card-grid">
+  <div class="card">
+    <h3>Multi-source News</h3>
+    <p>Collects articles from multiple APIs.</p>
+  </div>
+
+  <div class="card">
+    <h3>NLP Analysis</h3>
+    <p>Uses VADER sentiment engine.</p>
+  </div>
+
+  <div class="card">
+    <h3>Bias Metrics</h3>
+    <p>Computes narrative deviation across sources.</p>
+  </div>
+</div>
+
+<section class="hero">
+  <h1>Understand News Narratives with AI</h1>
+  <p>Analyze sentiment, bias, and polarization across global news sources.</p>
+
+  <form method="POST">
+    <input
+      type="text"
+      name="topic"
+      placeholder="Enter topic (e.g. AI, Elections)"
+    />
+    <button type="submit">Analyze</button>
+  </form>
+</section>
+
+{% endblock %}

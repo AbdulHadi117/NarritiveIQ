@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Articles Explorer</h1>
+
+<table>
+
+<tr>
+    <th>Title</th>
+    <th>Source</th>
+    <th>Sentiment</th>
+</tr>
+
+{% for article in articles %}
+<tr>
+    <td>{{ article.title }}</td>
+    <td>{{ article.source }}</td>
+    <td>{{ article.sentiment_label }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

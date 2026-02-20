@@ -1,0 +1,108 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+    
+}
+
+.navbar {
+    background: #111827;
+    color: white;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2 {
+    font-weight: 600;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 25px;
+    opacity: 0.9;
+}
+
+.navbar a:hover {
+    opacity: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.hero {
+    text-align: center;
+    margin-top: 120px;
+    padding: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: white;
+}
+
+.hero input {
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    width: 320px;
+}
+
+.hero button {
+    padding: 14px 24px;
+    border-radius: 8px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.card-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.metric h2 {
+    font-size: 36px;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #f9fafb;
+}
+
+.sentiment {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.Positive { background: #dcfce7; }
+.Negative { background: #fee2e2; }
+.Neutral  { background: #e5e7eb; }
