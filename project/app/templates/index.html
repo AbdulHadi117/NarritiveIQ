@@ -1,29 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>NarrativeIQ</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <h1>NarrativeIQ</h1>
 
     <form method="POST">
-        <input type="text" name="topic" placeholder="Enter topic" required>
-        <button type="submit">Analyze</button>
+      <input type="text" name="topic" placeholder="Enter topic" required />
+      <button type="submit">Analyze</button>
     </form>
 
-    <hr>
+    <hr />
+
+    <hr />
+
+    <h2>Bias Metrics</h2>
+
+    <p><strong>Bias Index:</strong> {{ bias_index }}</p>
+    <p><strong>Polarization Score:</strong> {{ polarization }}</p>
+
+    <h3>Source Sentiment</h3>
+
+    <ul>
+      {% for source in source_metrics %}
+      <li>
+        {{ source.source }} → Avg Sentiment: {{ source.avg_sentiment }} ({{
+        source.article_count }} articles)
+      </li>
+      {% endfor %}
+    </ul>
+
+    <hr />
 
     <h2>Fetched Articles</h2>
 
     {% for article in articles %}
-        <div style="margin-bottom:20px;">
-            <strong>{{ article.title }}</strong><br>
-            <small>{{ article.source }}</small><br>
-            <p>{{ article.description }}</p>
-            <p><strong>Sentiment:</strong> {{ article.sentiment_label }} ({{ article.sentiment_score }})</p>
-        </div>
+    <div style="margin-bottom: 20px">
+      <strong>{{ article.title }}</strong><br />
+      <small>{{ article.source }}</small><br />
+      <p>{{ article.description }}</p>
+      <p>
+        <strong>Sentiment:</strong> {{ article.sentiment_label }} ({{
+        article.sentiment_score }})
+      </p>
+    </div>
     {% endfor %}
-
-</body>
+  </body>
 </html>
