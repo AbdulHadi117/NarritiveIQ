@@ -1,4 +1,6 @@
-from textblob import TextBlob
+from nltk.sentiment import SentimentIntensityAnalyzer
+
+sia = SentimentIntensityAnalyzer()
 
 class SentimentService:
 
@@ -7,14 +9,14 @@ class SentimentService:
         if not text:
             return 0.0, "Neutral"
         
-        analysis = TextBlob(text)
-        score = analysis.sentiment.polarity
+        scores = sia.polarity_scores(text)
+        compound = scores['compound']
 
-        if score > 0.1:
+        if compound > 0.1:
             label = "Positive"
-        elif score < -0.1:
+        elif compound < -0.1:
             label = "Negative"
         else:
             label = "Neutral"
 
-        return score.round(2), label
+        return round(compound, 2), label
