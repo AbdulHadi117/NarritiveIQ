@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>NarrativeIQ</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <h1>NarrativeIQ</h1>
@@ -30,7 +31,8 @@
       </li>
       {% endfor %}
     </ul>
-
+    <h2>Source Sentiment Comparison</h2>
+    <canvas id="sentimentChart" width="400" height="150"></canvas>
     <hr />
 
     <h2>Fetched Articles</h2>
@@ -48,3 +50,30 @@
     {% endfor %}
   </body>
 </html>
+
+<script>
+const labels = {{ chart_labels | tojson }};
+const dataValues = {{ chart_values | tojson }};
+
+const ctx = document.getElementById('sentimentChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Average Sentiment Score',
+            data: dataValues
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                min: -1,
+                max: 1
+            }
+        }
+    }
+});
+</script>
