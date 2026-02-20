@@ -32,5 +32,7 @@ def home():
         articles=stored_articles,
         source_metrics=source_metrics,
         bias_index=bias_index,
-        polarization=polarization
+        polarization=polarization,
+        chart_labels = [s['source'] for s in source_metrics],
+        chart_values = [s['avg_sentiment'] for s in source_metrics]
     )
